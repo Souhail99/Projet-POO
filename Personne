@@ -1,0 +1,74 @@
+  // Attributs :
+
+        protected string nom;
+        protected string prenom;
+        protected string adresse;
+        protected int numerodetel;
+
+        // Constructeur :
+
+        public Personne(string nom, string prenom, string adresse, int numerodetel)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.adresse = adresse;
+            this.numerodetel = numerodetel;
+        }
+
+        // Propriétés :
+
+        public string Nom
+        {
+            get
+            {
+                return this.nom;
+            }
+            set
+            {
+                this.nom = value;
+            }
+        }
+
+        public string Prenom
+        {
+            get 
+            { 
+                return this.prenom; 
+            }
+            set 
+            { 
+                this.prenom = value; 
+            }
+        }
+
+        public string Adresse
+        {
+            get
+            {
+                return this.adresse;
+            }
+            set
+            {
+                this.adresse = value;
+            }
+        }
+
+
+        public int Numerodetelephone
+        {
+            get
+            {
+                return this.numerodetel;
+            }
+            set
+            {
+                this.numerodetel = value;
+            }
+        }
+
+        // Méthodes :
+
+        public override string ToString()
+        {
+            return " Le nom est : " + this.nom + ", le prénom est : "+this.prenom+", l'adresse de cette personne est : " + this.adresse + ", son numéro de téléphone est : " + this.numerodetel;
+        }
