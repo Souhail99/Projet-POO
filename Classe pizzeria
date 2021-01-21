@@ -1,0 +1,239 @@
+ static List<Commande> LectureFichierCommandes()
+        {
+            List<int> NumeroDeCommande = new List<int>();
+            List<int> HeureDeCommande = new List<int>();
+            List<DateTime> DateDeCommande = new List<DateTime>();
+            List<int> NumeroDuClient = new List<int>();
+            List<string> NomCommis = new List<string>();
+            List<string> NomLivreur = new List<string>();
+            List<string> EtatCommande = new List<string>();
+            List<string> SoldeCommande = new List<string>();
+
+            string nomFich = ("C:\\Users\\Souha\\source\\repos\\Fichier données POOA année 3 Projet\\Commandes.csv");
+
+            StreamReader fichLect = new StreamReader(nomFich);
+            string ligne = " ";
+            int compteur = 0;
+            List<string> gamma = new List<string>();
+            while (fichLect.Peek() > 0)
+            {
+                ligne = fichLect.ReadLine();
+                gamma.Add(ligne);
+                compteur++;
+                string[] words = ligne.Split(';');
+                foreach (var word in words)
+                {
+                    gamma.Add(word);
+                }
+            }
+            List<string> descriptionCommande = new List<string>();
+            for (int i = 0; i < gamma.Count; i++)//i=9
+            {
+                if (i == 0 && i % 9 == 0)
+                {
+                    descriptionCommande.Add(gamma[i]);
+                }
+                if (i < 9 && i != 0)
+                {
+
+                    NumeroDeCommande.Add(Convert.ToInt32(gamma[i]));
+                    string beta = gamma[i + 1].ToUpper();
+                    string[] words = beta.Split('H');
+                    HeureDeCommande.Add(Convert.ToInt32(words[0]));
+                    DateDeCommande.Add(Convert.ToDateTime(gamma[i + 2]));
+                    NumeroDuClient.Add(Convert.ToInt32(gamma[i + 3]));
+                    NomCommis.Add(Convert.ToString(gamma[i + 4]));
+                    NomLivreur.Add(Convert.ToString(gamma[i + 5]));
+                    EtatCommande.Add(Convert.ToString(gamma[i + 6]));
+                    SoldeCommande.Add(Convert.ToString(gamma[i + 7]));
+                    i = i + 8;
+
+                }
+                if (i > 9 && i % 9 != 0)
+                {
+                    NumeroDeCommande.Add(Convert.ToInt32(gamma[i]));
+                    string beta = gamma[i + 1].ToUpper();
+                    string[] words = beta.Split('H');
+                    HeureDeCommande.Add(Convert.ToInt32(words[0]));
+                    DateDeCommande.Add(Convert.ToDateTime(gamma[i + 2]));
+                    NumeroDuClient.Add(Convert.ToInt32(gamma[i + 3]));
+                    NomCommis.Add(Convert.ToString(gamma[i + 4]));
+                    NomLivreur.Add(Convert.ToString(gamma[i + 5]));
+                    EtatCommande.Add(Convert.ToString(gamma[i + 6]));
+                    SoldeCommande.Add(Convert.ToString(gamma[i + 7]));
+                    i = i + 8;
+                }
+            }
+
+            List<Commande> listedescommandes = new List<Commande>();
+            
+            for (int i = 0; i < NumeroDeCommande.Count; i++)
+            {
+                Commande beta = new Commande(NumeroDeCommande[i], HeureDeCommande[i], DateDeCommande[i], NumeroDuClient[i], NomCommis[i], NomLivreur[i], EtatCommande[i], SoldeCommande[i]);
+                listedescommandes.Add(beta);
+            }
+
+            return listedescommandes;
+
+
+        }
+
+       
+        static List<Commande> LectureFichierDetailsCommandes()
+        {
+            List<int> NumeroDeCommande = new List<int>();
+            List<string> ItemDeCommande = new List<string>();
+            List<int> PrixDeCommande = new List<int>();
+            List<string> TypeDeLaPizza = new List<string>();
+            List<string> TailleDeLaPizza = new List<string>();
+            List<int> VolumeDeLaBoisson = new List<int>();
+            List<int> QuantiteItemCommande = new List<int>();
+
+            string nomFich = ("C:\\Users\\Souha\\source\\repos\\Fichier données POOA année 3 Projet\\DetailsCommandes.csv");
+
+            StreamReader fichLect = new StreamReader(nomFich);
+            string ligne = " ";
+            int compteur = 0;
+            List<string> gamma = new List<string>();
+            while (fichLect.Peek() > 0)
+            {
+                ligne = fichLect.ReadLine();
+                gamma.Add(ligne);
+                compteur++;
+                string[] words = ligne.Split(';');
+                foreach (var word in words)
+                {
+                    gamma.Add(word);
+                }
+            }
+
+            List<string> descriptionCommande = new List<string>();
+            for (int i = 0; i < gamma.Count; i++)//i==8
+            {
+                if (i == 0 && i % 8 == 0)
+                {
+                    descriptionCommande.Add(gamma[i]);
+                }
+                if (i < 8 && i != 0)
+                {
+
+                    NumeroDeCommande.Add(Convert.ToInt32(gamma[i]));
+                    ItemDeCommande.Add(Convert.ToString(gamma[i + 1]));
+                    PrixDeCommande.Add(Convert.ToInt32(gamma[i + 2]));
+                    TypeDeLaPizza.Add(Convert.ToString(gamma[i + 3]));
+                    TailleDeLaPizza.Add(Convert.ToString(gamma[i + 4]));
+
+                    if (gamma[i + 1] != "Pizza")
+                    {
+                        VolumeDeLaBoisson.Add(Convert.ToInt32(gamma[i + 5]));
+                    }
+
+                    QuantiteItemCommande.Add(Convert.ToInt32(gamma[i + 6]));
+                    i = i + 7;
+
+                }
+                if (i > 8 && i % 8 != 0)
+                {
+                    NumeroDeCommande.Add(Convert.ToInt32(gamma[i]));
+                    ItemDeCommande.Add(Convert.ToString(gamma[i + 1]));
+                    PrixDeCommande.Add(Convert.ToInt32(gamma[i + 2]));
+                    TypeDeLaPizza.Add(Convert.ToString(gamma[i + 3]));
+                    TailleDeLaPizza.Add(Convert.ToString(gamma[i + 4]));
+
+                    if (gamma[i + 1] != "Pizza")
+                    {
+                        VolumeDeLaBoisson.Add(Convert.ToInt32(gamma[i + 5]));
+                    }
+
+                    QuantiteItemCommande.Add(Convert.ToInt32(gamma[i + 6]));
+                    i = i + 7;
+                }
+            }
+
+            List<Commande> listedesDetailscommandes = new List<Commande>();
+
+            for (int i = 0; i < NumeroDeCommande.Count; i++)
+            {
+                Commande beta = new Commande(NumeroDeCommande[i], ItemDeCommande[i], PrixDeCommande[i], TypeDeLaPizza[i], TailleDeLaPizza[i], VolumeDeLaBoisson[i], QuantiteItemCommande[i]);
+                listedesDetailscommandes.Add(beta);
+            }
+
+            return listedesDetailscommandes;
+
+
+
+        }
+       
+        
+        static List<Livreur> LectureFichierDetailsLivreur()
+        {
+            List<string> NomDuLivreur = new List<string>();
+            List<string> PrenomDuLivreur = new List<string>();
+            List<string> AdresseDuLivreur = new List<string>();
+            List<int> NumeroDuTelephone = new List<int>();
+            List<string> EtatDuLivreur = new List<string>();
+            List<string> MoyenDeLocomotionDuLivreur = new List<string>();
+
+            string nomFich = ("C:\\Users\\Souha\\source\\repos\\Fichier données POOA année 3 Projet\\Livreur.csv");
+
+            StreamReader fichLect = new StreamReader(nomFich);
+            string ligne = " ";
+            int compteur = 0;
+            List<string> gamma = new List<string>();
+            while (fichLect.Peek() > 0)
+            {
+                ligne = fichLect.ReadLine();
+                gamma.Add(ligne);
+                compteur++;
+                string[] words = ligne.Split(';');
+                foreach (var word in words)
+                {
+                    gamma.Add(word);
+                }
+            }
+            List<string> descriptionLivreur = new List<string>();
+
+            for (int i = 0; i < gamma.Count; i++)
+            {
+                if (i == 0 && i % 7 == 0)
+                {
+                    descriptionLivreur.Add(gamma[i]);
+
+                }
+                if (i < 7 && i != 0)
+                {
+
+                    NomDuLivreur.Add(Convert.ToString(gamma[i]));
+                    PrenomDuLivreur.Add(Convert.ToString(gamma[i + 1]));
+                    AdresseDuLivreur.Add(Convert.ToString(gamma[i + 2]));
+                    NumeroDuTelephone.Add(Convert.ToInt32(gamma[i + 3]));
+                    EtatDuLivreur.Add(Convert.ToString(gamma[i + 4]));
+                    MoyenDeLocomotionDuLivreur.Add(Convert.ToString(gamma[i + 5]));
+                    i = i + 6;
+
+                }
+                if (i > 7 && i % 7 != 0)
+                {
+                    NomDuLivreur.Add(Convert.ToString(gamma[i]));
+                    PrenomDuLivreur.Add(Convert.ToString(gamma[i + 1]));
+                    AdresseDuLivreur.Add(Convert.ToString(gamma[i + 2]));
+                    NumeroDuTelephone.Add(Convert.ToInt32(gamma[i + 3]));
+                    EtatDuLivreur.Add(Convert.ToString(gamma[i + 4]));
+                    MoyenDeLocomotionDuLivreur.Add(Convert.ToString(gamma[i + 5]));
+                    i = i + 6;
+                }
+
+            }
+
+            List<Livreur> listedesLivreurs = new List<Livreur>();
+
+            for (int i = 0; i < NomDuLivreur.Count; i++)
+            {
+                Livreur beta = new Livreur(NomDuLivreur[i], PrenomDuLivreur[i], AdresseDuLivreur[i], NumeroDuTelephone[i], EtatDuLivreur[i], MoyenDeLocomotionDuLivreur[i]);
+                listedesLivreurs.Add(beta);
+            }
+
+            return listedesLivreurs;
+        }
+
+
