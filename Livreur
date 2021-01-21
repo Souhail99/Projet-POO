@@ -1,0 +1,73 @@
+// Attribut :
+
+        private string moyendetransport;
+        private string etat;
+        private List<Commande> commande;
+        private string NomDuLivreur;
+        private string PrenomDuLivreur;
+        private string AdresseDuLivreur;
+        private int NumeroDuTelephone;
+        private string EtatDuLivreur;
+        private string MoyenDeLocomotionDuLivreur;
+
+        // Constructeur :
+
+        public Livreur(string nom, string prenom, string adresse, int numerodetel, string etat, string moyendetransport, Commande commande2) : base(nom,prenom,adresse,numerodetel)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.adresse = adresse;
+            this.numerodetel = numerodetel;
+            this.etat = etat;
+            this.moyendetransport = moyendetransport;
+            this.commande.Add(commande2);
+        }
+
+        public Livreur(string nom, string prenom, string adresse, int numerodetel, string etat, string moyendetransport) : base(nom, prenom, adresse, numerodetel)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.adresse = adresse;
+            this.numerodetel = numerodetel;
+            this.etat = etat;
+            this.moyendetransport = moyendetransport;
+
+        }
+
+
+
+        // Propriété :
+
+        public string MoyendeTransport
+        {
+            get 
+            {
+                return this.moyendetransport;
+            }
+            set
+            {
+                this.moyendetransport = value;
+            }
+        }
+
+        public string Etat
+        {
+            get
+            {
+                return this.etat;
+            }
+            set
+            {
+                this.etat = value;
+            }
+        }
+        // Méthodes :
+
+        public override string ToString()
+        {
+            return base.ToString() + " et son moyen de transport est : " + this.moyendetransport + ".";
+        }
+
+
+
+
