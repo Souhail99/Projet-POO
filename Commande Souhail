@@ -1,0 +1,170 @@
+// Attributs :
+
+        private int numerodecommande;
+        private DateTime date;
+        private int heure;
+        private string nomlivreur;
+        private string etatcommande;
+        private string soldecommande;
+        private Livreur livreur;
+        private string ItemDeCommande;
+        private int PrixDeCommande;
+        private string TypeDeLaPizza;
+        private string TailleDeLaPizza;
+        private int VolumeDeLaBoisson;
+        private int QuantiteItemCommande;
+        //private Client client;
+        //private Commis commis;
+        //private list<Pizza> pizza;
+        //private list<Boissons> boissons;
+
+        // Constructeur :
+
+        public Commande(int numerodecommande,DateTime date, string nomclient,string nomcommis)//list<Pizza> pizza,list<Boissons> boissons
+        {
+            this.numerodecommande = numerodecommande;
+            this.date = date;
+           //this.client.Nom=nomclient;
+           // this.commis.Nom=nomcommis;
+        
+        }
+        public Commande(DateTime date, string nomclient, string nomcommis)//list<Pizza> pizza,list<Boissons> boissons
+        {
+            Random alpha = new Random();
+            this.numerodecommande = alpha.Next(100000,6974000);
+            this.date = date;
+            //this.client.Nom=nomclient;
+            // this.commis.Nom=nomcommis;
+
+        }
+
+        public Commande(int numerodecommande, int heure,DateTime date, int numeroClient, string nomcommis, string nomlivreur,string etatcommande, string SoldeCommande)//list<Pizza> pizza,list<Boissons> boissons
+        {
+            this.numerodecommande = numerodecommande;
+            this.heure = heure;
+            this.date = date;
+            //this.client.Nom=nomclient;
+            // this.commis.Nom=nomcommis;
+            this.livreur.Nom = nomlivreur;
+            this.etatcommande = etatcommande;
+            this.soldecommande = SoldeCommande;
+        }
+ 
+
+        public Commande(int numerodecommande, string ItemDeCommande, int PrixDeCommande, string TypeDeLaPizza, string TailleDeLaPizza, int VolumeDeLaBoisson, int QuantiteItemCommande)//list<Pizza> pizza,list<Boissons> boissons
+        {
+            this.numerodecommande = numerodecommande;
+            this.ItemDeCommande = ItemDeCommande;
+            this.PrixDeCommande = PrixDeCommande;
+            this.TypeDeLaPizza = TypeDeLaPizza;
+            this.TailleDeLaPizza = TailleDeLaPizza;
+            this.VolumeDeLaBoisson = VolumeDeLaBoisson;
+            this.QuantiteItemCommande = QuantiteItemCommande;
+        }
+
+
+        public int NumerodeCommande
+        {
+            get
+            {
+                return this.numerodecommande;
+            }
+            set
+            {
+                this.numerodecommande = value;
+            }
+        }
+       
+        public DateTime Date
+        {
+            get
+            {
+                return this.date;
+            }
+            set
+            {
+                this.date = value;
+            }
+        }
+        
+        public int Heure
+        {
+            get
+            {
+                return this.date.Hour;
+            }
+
+        }
+       
+        public int Heure2
+        {
+            get
+            {
+                return this.heure;
+            }
+            set
+            {
+                this.heure = value;
+            }
+        }
+
+        public Livreur Livreur
+        {
+            get
+            {
+                return this.livreur;
+            }
+            set
+            {
+                this.livreur = value;
+            }
+        }
+
+        public string EtatCommande
+        {
+            get
+            {
+                return this.etatcommande;
+            }
+            set
+            {
+                this.etatcommande = value;
+            }
+        }
+        public string SoldeCommande
+        {
+            get
+            {
+                return this.soldecommande;
+            }
+            set
+            {
+                this.soldecommande = value;
+            }
+        }
+       
+
+
+
+        // Propriétés par rapport aux listes :
+
+        // Méthodes
+
+        public double Prix(int numerodecommande)//
+        {
+           
+            
+            
+            return 5;
+        
+        
+        
+        }
+
+
+
+
+        public override string ToString()
+        {
+            return "Le numéro de commande est : "+this.numerodecommande+ ", l'heure de la commande est : " +Heure+" et sa date :"+this.date;
+        }
